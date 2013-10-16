@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="recall" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM">
+	<object class="rclMessage" table="recall_messages" extends="xPDOSimpleObject">
+		<field key="id" dbtype="int" precision="100" phptype="integer" null="false" index="pk" generated="native" />
+
+		<field key="fio" dbtype="varchar" precision="128" phptype="string" null="false" />
+		<field key="content" dbtype="text" phptype="string" null="false" />
+		<field key="mail" dbtype="varchar" precision="128" phptype="string" null="false" />
+		<field key="location" dbtype="varchar" precision="512" phptype="string" null="false" />
+		<field key="ip_address" dbtype="varchar" precision="16" phptype="string" null="false" />
+		<field key="created" dbtype="datetime" phptype="datetime" null="false" />
+
+		<index alias="PRIMARY" name="PRIMARY" primary="true" unique="true">
+		    <column key="id" length="" collation="A" null="false" />
+		</index>
+	</object>
+</model>

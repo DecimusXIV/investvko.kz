@@ -1,0 +1,45 @@
+.marker-cluster {
+	background-clip: padding-box;
+	/*border-radius: 20px;*/
+    width: 20px;
+    height: 20px;
+    
+	}
+
+.marker-cluster > div {
+    width: 25px;
+    height: 25px;
+    font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    text-align: center;
+    /*
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+	margin-top: 5px;
+
+	
+	border-radius: 15px;
+	
+    */
+	}
+.marker-cluster-count {
+        float:right;
+        text-align: right;
+	}
+    .marker-cluster-count span{
+        position:relative;
+        top:5px;        
+        right:-5px;
+        border-radius: 3px;
+        background-color:red;
+        color:#fff;
+        padding:2px;
+    }
+.marker-cluster-img {
+
+	}
+    .marker-cluster-img img{
+        width:20px;
+        height:20px;
+    }
+

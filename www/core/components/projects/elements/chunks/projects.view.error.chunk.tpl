@@ -1,0 +1,1 @@
+[[%prjct.project_404? &namespace=`projects` &language=`ru`]]

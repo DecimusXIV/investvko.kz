@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="projects" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" version="1.1">
+    <!-- Отрасли проектов -->
+    <!-- category projects -->
+    <object class="prjctCategory" table="prjct_categories" extends="xPDOSimpleObject">
+        <!-- Идентификатор -->
+        <field key="id" dbtype="int" precision="100" phptype="integer" null="false" index="pk" generated="native" />
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true">
+            <column key="id" length="" collation="A" null="false" />
+        </index>
+        <!-- Название -->
+        <field key="name" dbtype="varchar" precision="256" phptype="string" null="false" />
+        <!-- Описание -->
+        <field key="description" dbtype="text" phptype="string" null="false" />
+        <!-- Проекты данной категории -->
+        <composite alias="Projects" class="prjctProject" local="id" foreign="category" cardinality="many" owner="local" />
+    </object>
+
+    <!-- Степень проработанности проектов -->
+    <!-- grade projects -->
+    <object class="prjctGrade" table="prjct_grades" extends="xPDOSimpleObject">
+        <!-- Идентификатор -->
+        <field key="id" dbtype="int" precision="100" phptype="integer" null="false" index="pk" generated="native" />
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true">
+            <column key="id" length="" collation="A" null="false" />
+        </index>
+        <!-- Название -->
+        <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" />
+        <!-- Описание -->
+        <field key="description" dbtype="text" phptype="string" null="false" />
+        <!-- Проекты данной степени -->
+        <composite alias="Projects" class="prjctProject" local="id" foreign="grade" cardinality="many" owner="local" />
+    </object>
+
+    <!-- Проекты -->
+    <!-- projects -->
+    <object class="prjctProject" table="prjct_projects" extends="xPDOSimpleObject">
+        <!-- Идентификатор -->
+        <field key="id" dbtype="int" precision="100" phptype="integer" null="false" index="pk" generated="native" />
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true">
+            <column key="id" length="" collation="A" null="false" />
+        </index>
+
+        <!-- Общая информация -->
+            <!-- Ф.И.О. -->
+            <!-- строка 128 -->
+            <field key="fio" dbtype="varchar" precision="128" phptype="string" null="false" default="Ф.И.О." />
+            <!-- Тип лица ( Физ. или Юр. )-->
+            <field key="face" dbtype="set" precision="'физ','юр'" phptype="string" null="false" default="юр" />
+            <!-- Должность -->
+            <!-- строка 255 -->
+            <field key="post" dbtype="varchar" precision="255" phptype="string" null="true" default="Занимаемая должность" />
+
+        <!-- Контактная информация -->
+            <!-- Улица -->
+            <!-- строка 255 -->
+            <field key="address" dbtype="varchar" precision="255" phptype="string" null="false" />
+            <!-- Почтовый адрес -->
+            <!-- строка 128 -->
+            <field key="mail" dbtype="varchar" precision="128" phptype="string" null="false" />
+            <!-- Телефон -->
+            <!-- строка 128 -->
+            <field key="phone" dbtype="varchar" precision="128" phptype="string" null="false" />
+
+        <!-- Описание проекта-->
+            <!-- Название проекта -->
+            <!-- строка 255 -->
+            <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" />
+            <!-- Цель проекта -->
+            <!-- строка 600 -->
+            <field key="target" dbtype="varchar" precision="600" phptype="string" null="false" />
+            <!-- Краткое описание проекта -->
+            <!-- строка 128 -->
+            <field key="description" dbtype="varchar" precision="128" phptype="string" null="false" />
+            <!-- Место реализации проекта -->
+            <!-- строка 255 -->
+            <field key="place" dbtype="varchar" precision="255" phptype="string" null="false" />
+            <!-- Степень прорпботанности -->
+            <!-- число -->
+            <field key="grade" dbtype="int" precision="11" phptype="integer" null="false" />
+            <!-- Отрасль производства -->
+            <!-- число -->
+            <field key="category" dbtype="int" precision="11" phptype="integer" null="false" />
+
+        <!-- Информация о финансировании -->
+            <!-- Стоимость инвестиционного проекта (в тенге) -->
+            <!-- число -->
+            <field key="cost" dbtype="int" precision="11" phptype="integer" null="false" default="1" />
+            <!-- Необходимый объем инвестиций для реализации проекта -->
+            <!-- число -->
+            <field key="investment" dbtype="int" precision="11" phptype="integer" null="false" default="1"/>
+            <!-- Рентабельность проекта (окупаемость (лет) -->
+            <!-- строка 128 -->
+            <field key="payback" dbtype="varchar" precision="128" phptype="string" null="true"/>
+            <!-- внутреняя ставка доходности (IRR) -->
+            <!-- число -->
+            <field key="irr" dbtype="int" precision="11" phptype="integer" null="false" default="1"/>
+            <!-- чистая приведенная стоимость (NOV)) -->
+            <!-- число -->
+            <field key="npv" dbtype="int" precision="11" phptype="integer" null="false" default="1"/>
+            <!-- Целевое назначение предполагаемых инвестиций -->
+            <!-- строка 255 -->
+            <field key="intended_purpose" dbtype="varchar" precision="255" phptype="string" null="true" />
+            <!-- Количество создаваемых рабочих мест -->
+            <!-- число -->
+            <field key="jobs" dbtype="int" precision="11" phptype="integer" null="false" default="1"/>
+
+        <!-- Служебная информация -->
+            <!-- Дата создания -->
+            <field key="created" dbtype="datetime" phptype="datetime" null="false" />
+            <!-- Статус проекта 1 опубликован, 0 нет -->
+            <field key="published" dbtype="tinyint" precision="1" phptype="integer" null="false" default="0" />
+        
+        <!-- Категория для проекта -->
+        <aggregate alias="Category" class="prjctCategory" local="category" foreign="id" cardinality="one" owner="foreign" />
+        <!-- Степень проработанности для проекта -->
+        <aggregate alias="Category" class="prjctGrade" local="grade" foreign="id" cardinality="one" owner="foreign" />
+    </object>
+</model>
+

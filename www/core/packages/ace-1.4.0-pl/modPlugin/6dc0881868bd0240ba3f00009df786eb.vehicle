@@ -1,0 +1,223 @@
+<?php return array (
+  'unique_key' => 'name',
+  'preserve_keys' => false,
+  'update_object' => true,
+  'related_objects' => 
+  array (
+    'PluginEvents' => 
+    array (
+      'c2d3a2e04e35e7b3d8adbbff18784743' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnChunkFormPrerender","priority":0,"propertyset":0}',
+        'guid' => 'ed4ecb66dc154cb95a30c5d52841ab2e',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnChunkFormPrerender',
+        ),
+        'signature' => 'd663fab0c5567e98f537c1362a8ea1be',
+      ),
+      '5b91852673f6228e7b9536da67383aa8' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnPluginFormPrerender","priority":0,"propertyset":0}',
+        'guid' => '6fe0ca3a79d2a07390576b7c6eed2089',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnPluginFormPrerender',
+        ),
+        'signature' => '85dc1074853693a1bad4ef0617dff784',
+      ),
+      'be27f3dd0cdc52a858593503f298c7e7' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnSnipFormPrerender","priority":0,"propertyset":0}',
+        'guid' => '75692aee34450ccb5c15255655f2b74f',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnSnipFormPrerender',
+        ),
+        'signature' => 'e0af4d81173ab37d7694b8c2bb765d98',
+      ),
+      '84e8dc91e5275ce3deeebfe501b54856' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnTempFormPrerender","priority":0,"propertyset":0}',
+        'guid' => '3c41f7d1510eeadac1aa9ad7f08d209c',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnTempFormPrerender',
+        ),
+        'signature' => '3b8c1c99661a0efe1fee0ec7971dcfcd',
+      ),
+      'afa4920343c3337149417c6c1889143c' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnFileEditFormPrerender","priority":0,"propertyset":0}',
+        'guid' => '39f522ea62f2a95618ceaa4ae750396d',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnFileEditFormPrerender',
+        ),
+        'signature' => '40f7ad62e8fe1a66e91e6d785f941d6f',
+      ),
+      '60d9cd2128c96d6bb935bd58b496d626' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnFileCreateFormPrerender","priority":0,"propertyset":0}',
+        'guid' => 'a9fcf022c6fa78a477b32a0d438df816',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnFileCreateFormPrerender',
+        ),
+        'signature' => 'bb9b6c8f3b1c1c591079695df6e9a2eb',
+      ),
+      '691d1939a02b3184b203610be157ea18' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnDocFormPrerender","priority":0,"propertyset":0}',
+        'guid' => 'f00720c43c2e09565834444d26556202',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnDocFormPrerender',
+        ),
+        'signature' => '73af2f732ca77e141d0a466cc3b4ad78',
+      ),
+      '019faa620dee2be314568bf59c9187e9' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnRichTextEditorRegister","priority":0,"propertyset":0}',
+        'guid' => '4557e88f2240789829fa87c42bdd8187',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnRichTextEditorRegister',
+        ),
+        'signature' => '7ced796f806020dad9143272fecc37c9',
+      ),
+      '95e7182189cd891c75eb37714c2ea933' => 
+      array (
+        'preserve_keys' => true,
+        'update_object' => false,
+        'unique_key' => 
+        array (
+          0 => 'pluginid',
+          1 => 'event',
+        ),
+        'class' => 'modPluginEvent',
+        'object' => '{"pluginid":0,"event":"OnManagerPageBeforeRender","priority":0,"propertyset":0}',
+        'guid' => '4f2bc283a052bbec24ffd5922d37a735',
+        'native_key' => 
+        array (
+          0 => 0,
+          1 => 'OnManagerPageBeforeRender',
+        ),
+        'signature' => '09015784034a651a0b6cb3166bfabf53',
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'PluginEvents' => 
+    array (
+      'preserve_keys' => true,
+      'update_object' => false,
+      'unique_key' => 
+      array (
+        0 => 'pluginid',
+        1 => 'event',
+      ),
+    ),
+  ),
+  'namespace' => 'ace',
+  'resolve' => 
+  array (
+    0 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"ace-1.4.0-pl\\/modPlugin\\/6dc0881868bd0240ba3f00009df786eb\\/0\\/","target":"return MODX_MANAGER_PATH . \'assets\\/components\\/\';","name":"ace"}',
+    ),
+    1 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"ace-1.4.0-pl\\/modPlugin\\/6dc0881868bd0240ba3f00009df786eb\\/1\\/","target":"return MODX_CORE_PATH . \'components\\/\';","name":"ace"}',
+    ),
+    2 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"ace-1.4.0-pl\\/modPlugin\\/6dc0881868bd0240ba3f00009df786eb.transport.resolver.resolver","name":"transport.resolver","type":"php"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'a00fa4f9a5678e3d1c9314e311a9cb54',
+  'package' => 'modx',
+  'class' => 'modPlugin',
+  'signature' => '6dc0881868bd0240ba3f00009df786eb',
+  'native_key' => 1,
+  'object' => '{"id":1,"source":0,"property_preprocess":0,"name":"Ace","description":"Ace code editor plugin for MODx Revolution","editor_type":0,"category":0,"cache_type":0,"plugincode":"","locked":0,"properties":null,"disabled":0,"moduleguid":"","static":1,"static_file":"ace\\/elements\\/plugins\\/ace.plugin.php","content":""}',
+);

@@ -1,0 +1,163 @@
+body{
+    padding:0px;
+    margin:0px;
+
+    min-width: 700px;
+    min-height: 700px;
+
+    font-family:"Calibri";
+}
+
+#map{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    min-height: 700px;
+    min-width: 500px;
+
+    margin-left: 250px;
+    z-index: 1;
+}
+
+/* ============================================ */
+/* Сайдбар интерактивной карты */
+/* ============================================ */
+
+#sidebar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:#333;
+    width: 253px;
+    height: 100%;
+    z-index: 100;
+    color:#fff;    
+}
+
+#sidebar > div{
+    background:#666;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 101;
+    width: 250px;
+    
+}
+
+#sidebar-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:#666;
+    width: 250px;
+
+    z-index: 101;
+
+    margin-top:150px;
+    margin-bottom:75px;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-top:1px solid #CBCBCB;
+    border-bottom:1px solid #CBCBCB;
+}
+#sidebar #sidebar-container-top{
+    background:#666;
+    padding:5px;    
+    height:85px;
+    color:#FFF !important;
+    border-bottom:1px solid #CBCBCB;
+}
+#sidebar-container-top table{
+    color:#FFF !important;
+    
+}
+#sidebar-container-top a{
+    text-decoration:underline;
+}
+#sidebar #sidebar-container-footer{
+    background:#666;
+    padding:5px;    
+    height:65px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    display:table-cell;
+    text-align:center;
+    vertical-align:center;
+}
+
+.leaflet-label{
+    opacity: 0.5;
+}
+
+.leaflet-draw-tooltip-off{
+    display: none;
+}
+
+#sidebar #logotip{
+    height:95px;
+}
+
+#sidebar #link-back{
+    text-align:right;
+    height:30px;
+}
+
+#sidebar a {
+    color:#fff;
+    text-decoration:none;
+}
+
+
+.layer-title {
+    height:35px;
+    background:#525252;
+    text-decoration:underline;
+    border-bottom:1px solid #CBCBCB;
+   
+}
+.layert-title.last{
+    border-top:1px solid #CBCBCB;
+}
+.layer-title.active{
+    background:#FF6600;
+}
+.control-title{
+    color:#FFF;
+    text-decoration:underline;
+    font-size:90%;
+    cursor:pointer;
+}
+.control-active{
+    height:18px
+}
+.control-listdown span{
+    float:right;
+    width:15px;
+    height:15px;
+    padding:5px 12px;
+    cursor:pointer;
+}
+.control-listdown span{
+    display:block;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-image:url(http://investvko.kz/assets/images/map/plus.png);
+}
+.control-listdown.active span{
+    background-image:url(http://investvko.kz/assets/images/map/minus.png);
+}
+
+.layer-container{
+    padding-left:25px;
+}
+.style-title{
+    padding:3px;
+}
+.style-title.active{
+    background-color:#FF6600;
+}

@@ -1,0 +1,138 @@
+<div id="map"></div>
+
+
+
+<script>
+		
+		var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png',
+			cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18}),
+			map = new L.Map('map', {layers: [cloudmade], center: new L.LatLng(-37.7772, 175.2756), zoom: 15 });
+
+		var drawnItems = new L.FeatureGroup();
+		
+		//.addTo(drawnItems)
+
+		[[!MapGetObject]]
+
+		
+		map.addLayer(drawnItems);
+
+		var drawControl = new L.Control.Draw({
+			draw: {
+				position: 'topleft',
+				polygon: {
+					title: 'Draw a polygon!',
+					allowIntersection: false,
+					drawError: {
+						color: '#b00b00',
+						timeout: 1000
+					},
+					shapeOptions: {
+						color: '#bada55'
+					}
+				},
+				/*
+				circle: {
+					shapeOptions: {
+						color: '#662d91'
+					}
+				}
+				/**/
+			},
+			edit: {
+				featureGroup: drawnItems
+			}
+		});
+		map.addControl(drawControl);
+
+		function newObject(mdl){
+
+			$.ajax({
+				  url: "http://modx.loc/app/map/save",
+				  type: "POST",
+				  data: {obj:mdl},
+				  cache: false,
+				  success: function(msg){
+				    console.log(msg);
+				  }
+				});
+			
+		}
+		function getPolygonGeometry(a){
+			var res = "";
+			$.each(a,function(r,point){
+				console.log(point);
+				res=res+"["+point.lat+","+point.lng+"],";
+			});
+			res=res.substr(0,(res.length-1));
+			return res;
+		}
+		map.on('draw:created', function (e) {
+			var type = e.layerType,
+				layer = e.layer;
+			layer.dbId = "new";
+		
+
+			if (type === 'marker') {
+				layer.dbType = "marker";
+				var tmpObj = {
+					id : layer.dbId,
+					type : layer.dbType,
+					geometry : layer._latlng.lat+","+layer._latlng.lng
+				};
+				newObject(tmpObj)
+			}
+
+			if (type === 'polygon') {
+				layer.dbType = "polygon";
+				var tmpObj = {
+					id : layer.dbId,
+					type : layer.dbType,
+					geometry : getPolygonGeometry(layer._latlngs)
+				};
+				newObject(tmpObj)
+			}
+
+			drawnItems.addLayer(layer);
+		});
+
+
+
+		map.on('draw:edited', function (e) {
+			var layers = e.layers;
+			var countOfEditedLayers = 0;
+			layers.eachLayer(function(layer) {
+				if (layer.dbType === 'marker') {
+					var tmpObj = {
+						id : layer.dbId,
+						type : layer.dbType,
+						geometry : layer._latlng.lat+","+layer._latlng.lng
+					};
+					newObject(tmpObj);
+				}
+				
+				if (layer.dbType === 'polygon') {
+					
+					var tmpObj = {
+						id : layer.dbId,
+						type : layer.dbType,
+						geometry : getPolygonGeometry(layer._latlngs)
+					};
+					newObject(tmpObj);
+
+				}
+
+
+				countOfEditedLayers++;
+			});			
+		});
+		map.on('draw:removed', function (e) {
+			console.log(e);
+		});
+		/*
+		L.DomUtil.get('changeColor').onclick = function () {
+			drawControl.setDrawingOptions({ rectangle: { shapeOptions: { color: '#004a80' } } });
+		};
+		/**/
+
+	</script>

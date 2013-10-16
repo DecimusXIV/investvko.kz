@@ -1,0 +1,50 @@
+#soc
+{
+	margin:0;
+	float:left;
+	padding:50px 0 0 30px;
+}
+#soc-1, #soc-2, #soc-3, #soc-4
+{
+	float:left;
+	display:block;
+	width:33px;
+	height:31px;
+	margin:0 10px 0 0;
+}
+
+#soc-1
+{
+	background:url(../images/soc-1.png) no-repeat;
+}
+#soc-2
+{
+	background:url(../images/soc-2.png) no-repeat;
+}
+#soc-3
+{
+    overflow:hidden;
+	background:url(../images/soc-3.png) no-repeat;
+}
+#soc-4
+{
+	background:url(../images/soc-4.png) no-repeat;
+}
+
+
+#soc-1:hover
+{
+	background:url(../images/soc-1-active.png) no-repeat;
+}
+#soc-2:hover
+{
+	background:url(../images/soc-2-active.png) no-repeat;
+}
+#soc-3:hover
+{
+	background:url(../images/soc-3-active.png) no-repeat;
+}
+#soc-4:hover
+{
+	background:url(../images/soc-4-active.png) no-repeat;
+}

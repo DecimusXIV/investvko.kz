@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="maps" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM">
+
+    <object class="MapLayer" table="maps_layer" extends="xPDOSimpleObject">
+        <!-- Название слоя-->
+        <field key="Title" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <!-- Описание слоя-->
+        <field key="Description" dbtype="text" phptype="string" null="true" />
+        <!-- Публикация объекта -->
+        <field key="Published" dbtype="int" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+
+        <composite alias="MapObject" class="MapObject" local="id" foreign="LayerId" cardinality="many" owner="local" />
+
+    </object>
+
+    <object class="MapObject" table="maps_object" extends="xPDOSimpleObject">
+        <!-- Идентификатор слоя -->
+        <field key="LayerId" dbtype="int" precision="11" phptype="integer" null="false" default="1"/>
+        <!-- Идентификатор Стиля -->
+        <field key="StyleId" dbtype="int" precision="11" phptype="integer" null="true" />
+        <!-- Идентификатор Иконки (только для маркера) -->
+        <field key="IconId" dbtype="int" precision="11" phptype="integer" null="true" />
+
+        <!-- Тип объекта -->
+        <field key="Type" dbtype="varchar" precision="16" phptype="string" null="false" default="marker" />
+
+        <!-- Заголовок объекта -->
+        <field key="Title" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <!-- Описание объекта -->
+        <field key="Description" dbtype="text" phptype="string" null="true" />
+        <!-- Геометрия объекта -->
+        <field key="Geometry" dbtype="text" phptype="string" null="true" />
+        <!-- Геометрия SVG объекта ? -->
+        <field key="GeometrySVG" dbtype="text" phptype="string" null="true" />
+        <!-- Радиус (только для окружности) -->
+        <field key="CircleRadius" dbtype="int" precision="11" phptype="integer" null="true" />
+        <!-- Z-Index объекта -->
+        <field key="IndexZ" dbtype="int" precision="11" phptype="integer" null="false"  default="" />
+        <!-- Публикация объекта -->
+        <field key="Published" dbtype="int" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+
+        <!-- Всплывающие сообщение ? -->
+        <field key="Message" dbtype="text" phptype="string" null="true" />
+
+        <aggregate alias="MapLayer" class="MapLayer" local="LayerId" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="MapStyle" class="MapStyle" local="StyleId" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="MapIcon" class="MapIcon" local="IconId" foreign="id" cardinality="one" owner="foreign" />
+    </object>
+
+    <object class="MapStyle" table="maps_style" extends="xPDOSimpleObject">
+        <!-- Картинка для легенды -->
+        <field key="image" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <!-- Название стиля -->
+        <field key="Title" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <!-- Описание стиля -->
+        <field key="Description" dbtype="text" phptype="string" null="true" />
+        
+        <composite alias="Comments" class="Comments" local="id" foreign="StyleId" cardinality="many" owner="local" />
+    </object>
+
+    <object class="MapIcon" table="maps_icon" extends="xPDOSimpleObject">
+        <!-- Картинка для легенды -->
+        <field key="image" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <!-- Название иконки -->
+        <field key="Title" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <!-- Описание иконки -->
+        <field key="Description" dbtype="text" phptype="string" null="true" />
+        <!-- Объект иконки -->
+        <field key="Gist" dbtype="text" phptype="string" null="true" />
+
+        <composite alias="Comments" class="Comments" local="id" foreign="IconId" cardinality="many" owner="local" />
+    </object>
+
+</model>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="market" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" version="1.1">
+ 	<!-- Тип объявления -->
+ 	<object class="mrktType" table="mrkt_types" extends="xPDOSimpleObject">
+ 		<!-- Идентификатор -->
+        <field key="id" dbtype="int" precision="100" phptype="integer" null="false" index="pk" generated="native" />
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true">
+            <column key="id" length="" collation="A" null="false" />
+        </index>
+		<field key="name" dbtype="varchar" precision="64" phptype="string" null="false" />
+		<!-- Объявления для данного типа -->
+        <composite alias="Adverts" class="mrktAdverts" local="id" foreign="category" cardinality="many" owner="local" />
+	</object>
+	
+	<!-- Категория объявления -->
+ 	<object class="mrktCategory" table="mrkt_categories" extends="xPDOSimpleObject">
+ 		<!-- Идентификатор -->
+        <field key="id" dbtype="int" precision="100" phptype="integer" null="false" index="pk" generated="native" />
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true">
+            <column key="id" length="" collation="A" null="false" />
+        </index>
+
+		<field key="parent" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+		<field key="name" dbtype="varchar" precision="512" phptype="string" null="false" />
+		<field key="path" dbtype="varchar" precision="512" phptype="string" null="false" />
+
+		<!-- Связи между категориями -->
+        <composite alias="childCategories" class="mrktCategory" local="id" foreign="parent" cardinality="many" owner="local" />
+        <aggregate alias="parentCategory" class="mrktCategory" local="parent" foreign="id" cardinality="one" owner="foreign" />
+
+		<!-- Объявления для данной категории -->
+        <composite alias="Adverts" class="mrktAdverts" local="id" foreign="category" cardinality="many" owner="local" />
+	</object>
+	
+	<!-- Район объявления -->
+ 	<object class="mrktRegion" table="mrkt_regions" extends="xPDOSimpleObject">
+ 		<!-- Идентификатор -->
+        <field key="id" dbtype="int" precision="100" phptype="integer" null="false" index="pk" generated="native" />
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true">
+            <column key="id" length="" collation="A" null="false" />
+        </index>
+		<field key="name" dbtype="varchar" precision="64" phptype="string" null="false" />
+
+		<!-- Объявления для данного района -->
+        <composite alias="Adverts" class="mrktAdverts" local="id" foreign="region" cardinality="many" owner="local" />
+	</object>
+	
+	<!-- Объявление -->
+	<object class="mrktAdvert" table="mrkt_adverts" extends="xPDOSimpleObject">
+		<!-- Идентификатор -->
+        <field key="id" dbtype="int" precision="100" phptype="integer" null="false" index="pk" generated="native" />
+        <index alias="PRIMARY" name="PRIMARY" primary="true" unique="true">
+            <column key="id" length="" collation="A" null="false" />
+        </index>
+
+        <field key="category" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+		<field key="type" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+		<field key="region" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+		<field key="content" dbtype="text" phptype="string" null="false" />
+		<field key="contact" dbtype="varchar" precision="512" phptype="string" null="false" />
+		<field key="price" dbtype="varchar" precision="64" phptype="string" null="false" default="1" />
+		<field key="amount" dbtype="varchar" precision="64" phptype="string" null="false" default="шт." />
+		<field key="unit" dbtype="varchar" precision="32" phptype="string" null="false" />
+		<field key="created" dbtype="datetime" phptype="datetime" null="false" />
+		<field key="published" dbtype="tinyint" precision="1" phptype="integer" null="false" default="0" />
+        <field key="photo" dbtype="varchar" precision="512" phptype="string" null="false" />
+
+        <field key="mail" dbtype="varchar" precision="64" phptype="string" null="false" />
+
+		<!-- Категория для проекта -->
+        <aggregate alias="Type" class="mrktType" local="type" foreign="id" cardinality="one" owner="foreign" />
+        <!-- Категория для проекта -->
+        <aggregate alias="Category" class="mrktCategory" local="category" foreign="id" cardinality="one" owner="foreign" />
+        <!-- Категория для проекта -->
+        <aggregate alias="Region" class="mrktRegion" local="region" foreign="id" cardinality="one" owner="foreign" />
+    </object>	
+</model>

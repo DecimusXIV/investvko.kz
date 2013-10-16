@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="projects" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" version="1.1">
+	<object class="Categories" table="categories" extends="xPDOSimpleObject">
+		<field key="parent" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+		<field key="name" dbtype="varchar" precision="256" phptype="string" null="false" />
+		<field key="description" dbtype="text" phptype="string" null="false" />
+		<field key="path" dbtype="varchar" precision="255" phptype="string" null="true" />
+	</object>
+	<object class="Projects" table="projects" extends="xPDOSimpleObject">
+		<field key="category" dbtype="int" precision="11" phptype="integer" null="false" />
+		<field key="name" dbtype="varchar" precision="256" phptype="string" null="false" />
+		<field key="initiator" dbtype="varchar" precision="512" phptype="string" null="false" />
+		<field key="amount" dbtype="int" precision="11" phptype="integer" null="false" />
+		<field key="created" dbtype="datetime" phptype="datetime" null="false" />
+		<field key="published" dbtype="tinyint" precision="1" phptype="integer" null="false" default="0" />
+	</object>
+</model>
